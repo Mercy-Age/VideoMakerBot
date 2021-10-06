@@ -1,2 +1,2 @@
-from ImageToTextToAudio.imageToText import GetText
-from ImageToTextToAudio.textToAudio import CreateAudio
+from ImageToTextToAudio.imageToText import get_text
+from ImageToTextToAudio.textToAudio import create_audio

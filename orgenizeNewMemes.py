@@ -1,9 +1,9 @@
-from ImageToTextToAudio import GetText, CreateAudio
+from ImageToTextToAudio import get_text, create_audio
 import os
 
-def orgenizeFile(file, num):
-	text = GetText(f'NewMemes/{file}')
-	CreateAudio(text, f'Audio/{num}.mp3')
+def orgenize_file(file, num):
+	text = get_text(f'NewMemes/{file}')
+	create_audio(text, f'Audio/{num}.mp3')
 
 	os.rename(f'NewMemes/{file}', f'Memes/{num}.jpg')
 
@@ -15,7 +15,7 @@ def main():
 	for file in files:
 		if 'jpg' in file:
 			num += 1
-			orgenizeFile(file, num)
+			orgenize_file(file, num)
 	
 	number.seek(0)
 	number.write(str(num))
