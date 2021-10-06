@@ -6,9 +6,12 @@ def get_text(path: str):
 	#take the text from the image
 	str_list = pytesseract.image_to_string(path).split('\n')
 	
-	#remove the ♀ symbol and the '\n ' that pytesseract create
+	#remove the '♀' symbol and the '\n ' that pytesseract create
+	#also remove '.' couse its slow the audio and I dont like it
 	str_list.pop()
 	str_list = list(filter((' ').__ne__, str_list))
+	str_list = list(filter(('.').__ne__, str_list))
+
 	
 	# remove duplicate \n couse its slow the text to audio
 	str_list = remove_duplicate_br(str_list)

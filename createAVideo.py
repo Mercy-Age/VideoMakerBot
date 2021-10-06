@@ -1,15 +1,32 @@
 from moviepy.editor import *
 import os
-import pygame
 
-# audio = 'Audio/1.mp3'
-# img = 'Memes/1.jpg'
+def create_video(file_name: str, save_path: str):
+	audio = 'Audio/'+file_name+'.mp3'
+	img = 'Memes/'+file_name+'.jpg'
 
-# pygame.display.set_caption('Hello World!')
+	#create video
+	videoclip = ImageClip(img).set_duration(10)
+	videoclip = videoclip.set_fps(60)
+	#create audio
+	audioclip = AudioFileClip(audio)
 
-# videoclip = ImageClip(img).set_duration(4)
-# audioclip = AudioFileClip('Audio/2.mp3')
-# videoclip.audio = audioclip
-# videoclip.preview()
+	#combine the audio with the video
+	videoclip.audio = audioclip
+	#save
+	videoclip.write_videofile('MemeVideo/'+file_name+'.mp4')
 
-# pygame.quit()
+	#delete the original files couse we dont need them anymore
+	os.remove(audio)
+	os.remove(img)
+
+def main():
+	files = os.listdir('Memes')
+
+	for file in files:
+		#I want the name of the file without the ending
+		file_name = file.replace('.jpg','')
+		create_video(file_name, '')
+
+if __name__ == '__main__':
+	main()

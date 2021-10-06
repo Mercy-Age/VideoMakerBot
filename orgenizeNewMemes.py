@@ -1,7 +1,7 @@
 from ImageToTextToAudio import get_text, create_audio
 import os
 
-def orgenize_file(file, num):
+def orgenize_file(file: str, num: int):
 	text = get_text(f'NewMemes/{file}')
 	create_audio(text, f'Audio/{num}.mp3')
 
